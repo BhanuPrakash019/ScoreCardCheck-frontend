@@ -10,7 +10,7 @@ const Results = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`http://localhost:8085/details/${hallTicketNumber}`);
+      const res = await axios.get(`https://backend-scorecardcheck.onrender.com/details/${hallTicketNumber}`);
       setStudent(res.data);
       setError("");
     } catch (err) {
