@@ -8,14 +8,19 @@ const Results = () => {
   const [student, setStudent] = useState(null);
   const [error, setError] = useState("");
 
+  // Get API base URL from environment variable
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8085';
+
   const fetchData = async () => {
     try {
-      const res = await axios.get(`https://backend-scorecardcheck.onrender.com/details/${hallTicketNumber}`);
+      // Use environment variable instead of hardcoded URL
+      const res = await axios.get(`${API_BASE_URL}/details/${hallTicketNumber}`);
       setStudent(res.data);
       setError("");
     } catch (err) {
       setStudent(null);
       setError("No student found with this Hall Ticket Number");
+      console.error("API Error:", err); // Added for debugging
     }
   };
 
